@@ -1,13 +1,26 @@
+const fs = require('fs');
 const { REST } = require('@discordjs/rest');
-require('dotenv').config({ path: '.env' })
 const { Routes } = require('discord-api-types/v9');
-const clientId = process.env.CLIENT_ID
-const guildId = process.env.GUILD_ID
+const { clientId, guildId, token } = require('./config.json');
 
-const TOKEN = process.env.CLIENT_TOKEN
 const commands = [];
+const cmdDirs = fs.readdirSync('./commands')
+/* Loop through subdirectories in commands directory */
+for (let dir of cmdDirs) {
+    /* Read every subdirectory and filter for JS files */
+    let commandFiles = fs.readdirSync(`./commands/${dir}`)
+    .filter(f => f.endsWith('.js'));
 
-const rest = new REST({ version: '9' }).setToken(TOKEN);
+    /* Loop through every file */
+    for (let file of commandFiles) {
+        /* Set command file */
+        let command = require(`./commands/${dir}/${file}`);
+		commands.push(command.data.toJSON());
+    };
+};
+
+
+const rest = new REST({ version: '9' }).setToken(token);
 
 (async () => {
 	try {
