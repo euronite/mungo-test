@@ -26,7 +26,6 @@ module.exports = {
 			{name:"Account Creation", value:interaction.user.createdAt.toString()}
 			)
 		avatarEmbed.addField("Roles:", interaction.member.roles.cache.map(roles => `${roles}`).join(', '), true)
-		//console.log(interaction.member.roles.cache)
 		avatarEmbed.setThumbnail(user.displayAvatarURL({dynamic:true}))
 		await interaction.reply({embeds: [avatarEmbed]})
 	},
