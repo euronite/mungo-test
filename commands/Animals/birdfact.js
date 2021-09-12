@@ -17,10 +17,10 @@ module.exports = {
     if (result === undefined) {
       return interaction.reply('Error occurred, try again later or report to developer.');
     }
-    const chickenEmbed = new MessageEmbed()
+    const birdEmbed = new MessageEmbed()
         .setColor('0099ff')
         .setTitle('Here\'s a bird fact:')
         .setDescription(result.fact);
-    await interaction.reply({embeds: [chickenEmbed]});
+    await interaction.reply({embeds: [birdEmbed]});
   },
 };
