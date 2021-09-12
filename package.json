@@ -24,6 +24,7 @@
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
     "git-last-commit": "^1.0.1",
+    "humanize-duration": "^3.27.0",
     "node-fetch": "^3.0.0"
   },
   "devDependencies": {
