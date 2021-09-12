@@ -4,7 +4,7 @@ const {MessageEmbed} = require('discord.js');
 const fetch = (...args) => import('node-fetch').then((
     {default: fetch}) => fetch(...args),
 );
-// const git = require("git-last-commit")
+const git = require('git-last-commit');
 module.exports = {
   data: new SlashCommandBuilder()
       .setName('about')
@@ -32,13 +32,11 @@ module.exports = {
         {name: 'Server Count', value: `${interaction.client.guilds.cache.size}`},
     );
     // get last commit message
-    // let msg = ""
-    // git.getLastCommit(function(err, commit){
-    // msg = commit.subject
-    // })
-    // console.log(msg)
-    aboutInfo.setThumbnail('https://img.icons8.com/color/48/000000/scottish-thistle.png');
-    await interaction.reply({embeds: [aboutInfo]});
+    git.getLastCommit(async function(err, commit) {
+      aboutInfo.addField('Changelog', commit.subject);
+      aboutInfo.setThumbnail('https://img.icons8.com/color/48/000000/scottish-thistle.png');
+      await interaction.reply({embeds: [aboutInfo]});
+    });
   },
 };
 
