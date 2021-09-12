@@ -11,7 +11,7 @@ module.exports = {
     if (!msg) {
       return interaction.reply(`There is nothing to snipe!`);
     }
-    db.delete(`snipermsg_${interaction.channel.id}`);
+    db.delete(`snipemsg_${interaction.channel.id}`);
     db.delete(`snipe_sender_${interaction.channel.id}`);
     const embed = new MessageEmbed()
         .setTitle(interaction.client.users.cache.get(senderid).username,
