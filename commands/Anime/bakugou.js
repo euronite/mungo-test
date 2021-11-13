@@ -9,7 +9,7 @@ module.exports = {
   async execute(interaction) {
     const bakugouEmbed = new MessageEmbed()
         .setColor('0099ff')
-        .setTitle('Here\'s a bakugou image:');
+        .setTitle('Here\'s a Bakugou image:');
     bakugou = [
       'https://media1.tenor.com/images/328bcf479b6563a2240300c7ca8f8fed/tenor.gif',
       'https://media1.tenor.com/images/d7214976aeda545f3351a74d0f74d5f5/tenor.gif',
